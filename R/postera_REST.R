@@ -19,8 +19,6 @@ postera_REST <- function(
     httr::build_url()
   url_args <- list(...)
 
-  headers = list('X-API-KEY' = api_key)
-
   if (verbose) {
     cat("making request:\n")
     cat("  url: ", url, "\n")
@@ -102,10 +100,3 @@ postera_REST <- function(
   })
 }
 
-
-httr::POST(
-  url = 'https://api.postera.ai/api/v1/med-chem-alerts/',
-  httr::add_headers("X-API-KEY" = api_key),
-  body = list(smiles = smiles),
-  encode="form") %>%
-  httr::content("text", encoding = "UTF-8")
